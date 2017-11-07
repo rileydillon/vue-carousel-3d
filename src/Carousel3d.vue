@@ -413,8 +413,9 @@
                 this.viewport = this.$el.clientWidth
             },
             setSize () {
-                this.$el.style.cssText += 'height:' + this.slideHeight + 'px;'
-                this.$el.childNodes[0].style.cssText += 'width:' + this.slideWidth + 'px;' + ' height:' + this.slideHeight + 'px;'
+                this.$el.style.cssText += 'height:' + this.containerHeight + 'px;'
+                this.$el.childNodes[0].style.cssText += 'height:' + this.slideHeight + 'px;'
+                this.$el.childNodes[0].childNodes[0].style.cssText += 'width:' + this.slideWidth + 'px;' + ' height:' + this.slideHeight + 'px;'
             }
         },
 

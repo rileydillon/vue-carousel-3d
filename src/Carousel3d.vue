@@ -1,16 +1,20 @@
 <template>
-    <div class="carousel-3d-container" :style="{height: this.slideHeight + 'px'}">
-        <div class="carousel-3d-slider" :style="{width: this.slideWidth + 'px', height: this.slideHeight + 'px'}">
-            <slot></slot>
+    <div class="carousel-3d-outer" :style="{height: this.containerHeight + 'px'}">
+        <div class="carousel-3d-container" :style="{height: this.slideHeight + 'px'}">
+            <div class="carousel-3d-slider" :style="{width: this.slideWidth + 'px', height: this.slideHeight + 'px'}">
+                <slot></slot>
+            </div>
+            <controls v-if="controlsVisible" :next-html="controlsNextHtml" :prev-html="controlsPrevHtml"
+                      :width="controlsWidth" :height="controlsHeight"></controls>
         </div>
-        <controls v-if="controlsVisible" :next-html="controlsNextHtml" :prev-html="controlsPrevHtml"
-                  :width="controlsWidth" :height="controlsHeight"></controls>
+        <dots v-if="dotsVisible" :width="dotsWidth" :height="dotsHeight" :total="total" :current="currentIndex"></dots>
     </div>
 </template>
 
 <script>
     import autoplay from './mixins/autoplay'
     import Controls from './Controls.vue'
+    import Dots from './Dots.vue'
     import Slide from './Slide.vue'
 
     const noop = () => {
@@ -20,7 +24,8 @@
         name: 'carousel3d',
         components: {
             Controls,
-            Slide
+            Slide,
+            Dots
         },
         props: {
             count: {
@@ -110,6 +115,18 @@
             onSlideChange: {
                 type: Function,
                 default: noop
+            },
+            dotsVisible: {
+                type: Boolean,
+                default: true
+            },
+            dotsHeight: {
+                type: [String, Number],
+                default: 10
+            },
+            dotsWidth: {
+                type: [String, Number],
+                default: 10
             }
         },
         data () {
@@ -157,6 +174,9 @@
                 const ar = this.calculateAspectRatio(sw, sh)
 
                 return this.slideWidth / ar
+            },
+            containerHeight () {
+                return this.slideHeight + this.dotsHeight * 4
             },
             visible () {
                 const v = (this.display > this.total) ? this.total : this.display
@@ -434,13 +454,24 @@
 </script>
 
 <style scoped>
-    .carousel-3d-container {
+    .carousel-3d-outer {
         min-height: 1px;
         width: 100%;
         position: relative;
         z-index: 0;
         overflow: hidden;
         margin: 20px auto;
+        box-sizing: border-box;
+    }
+
+    .carousel-3d-container {
+        min-height: 1px;
+        width: 100%;
+        position: relative;
+        z-index: 0;
+        overflow: hidden;
+        /* margin: 20px auto; */
+        top: 0;
         box-sizing: border-box;
     }
 

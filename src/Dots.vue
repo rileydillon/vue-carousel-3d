@@ -54,11 +54,11 @@
         display:  inline-block;
         vertical-align: top;
         background:  white;
-        margin: 0 8px;
+        margin: 0 5px;
         cursor: pointer;
     }
 
     .active {
-        background: yellow;
+        background: #ffd520;
     }
 </style>

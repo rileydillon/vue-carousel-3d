@@ -83,16 +83,16 @@
 
     .next:hover, .prev:hover {
         cursor: pointer;
-        opacity: 0.7;
+        color: #ffd520;
     }
 
     .prev {
-        left: 10px;
+        left: 0px;
         text-align: left;
     }
 
     .next {
-        right: 10px;
+        right: 0px;
         text-align: right;
     }
 

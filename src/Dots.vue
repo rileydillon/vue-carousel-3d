@@ -41,7 +41,7 @@
     }
 </script>
 
-<style scoped>
+<style>
     .carousel-3d-dots {
         position: absolute;
         bottom: 0;
@@ -53,7 +53,7 @@
     .dot {
         display:  inline-block;
         vertical-align: top;
-        background:  red;
+        background:  white;
         margin: 0 8px;
         cursor: pointer;
     }

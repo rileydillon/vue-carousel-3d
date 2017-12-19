@@ -461,7 +461,7 @@
         position: relative;
         z-index: 0;
         overflow: hidden;
-        margin: 20px auto;
+        /* margin: 20px auto; */
         box-sizing: border-box;
     }
 

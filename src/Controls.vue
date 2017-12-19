@@ -81,6 +81,10 @@
         top: 0;
     }
 
+    @media only screen and (max-width : 768px) {
+        font-size: 40px;
+    }
+
     .next:hover, .prev:hover {
         cursor: pointer;
         color: #ffd520;
